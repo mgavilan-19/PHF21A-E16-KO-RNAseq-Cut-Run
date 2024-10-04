@@ -47,14 +47,8 @@ go_results <- enrichGO(
 summary(go_results)
 
 #Visualize the results:
-#Barplot
-barplot_up <- barplot(go_results, showCategory=10)
-barplot_up <- barplot_up + theme(axis.title.y = element_text(size = 6))
-print(barplot_up)
-ggsave("GO_UP_bar_plot.pdf", barplot_up, width = 15.98, height = 20.73, units = "cm")
-
 #Dotplot
-dotplot_up <- dotplot(go_results, showCategory=10)
+dotplot_up <- dotplot(go_results, showCategory=5)
 dotplot_up <- dotplot_up + theme(axis.title.y = element_text(size = 6))
 print(dotplot_up)
 ggsave("GO_UP_dotplot.pdf", dotplot_up, width = 15.98, height = 20.73, units = "cm")
@@ -81,15 +75,8 @@ go_results_down <- enrichGO(
 summary(go_results_down)
 
 #Visualize the results:
-#Barplot
-barplot_down <- barplot(go_results_down, showCategory=10)
-barplot_down <- barplot_down + theme(axis.title.y = element_text(size = 6))
-print(barplot_down)
-ggsave("GO_DOWN_bar_plot.pdf", barplot_down, width = 15.98, height = 20.73, units = "cm")
-
-
 #Dotplot
-dotplot_down <- dotplot(go_results_down, showCategory=10)
+dotplot_down <- dotplot(go_results_down, showCategory=5)
 dotplot_down <- dotplot_down + theme(axis.title.y = element_text(size = 6))
 print(dotplot_down)
 ggsave("GO_DOWN_dotplot.pdf", dotplot_down, width = 15.98, height = 20.73, units = "cm")
