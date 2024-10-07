@@ -26,7 +26,6 @@ mm_hallmark_sets <- msigdbr(
 # We will need this so we can use the pipe: %>%
 library(magrittr)
 
-
 gene_list <- as.character(up_resLFC$entrezid)
 
 # To get the universe of all genes, you can use the org.Mm.eg.db package
@@ -56,9 +55,6 @@ ggsave("GO_UP_dotplot.pdf", dotplot_up, width = 15.98, height = 20.73, units = "
 #### DOWN
 
 down_gene_list <- as.character(down_resLFC$entrezid)
-
-# To get the universe of all genes, you can use the org.Mm.eg.db package
-all_genes <- keys(org.Mm.eg.db, keytype = "ENTREZID")
 
 go_results_down <- enrichGO(
   gene         = down_gene_list,
