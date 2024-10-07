@@ -1,8 +1,5 @@
 # Read a text file into a data frame --- deseq coutns
 countData <- read.table("ctx_e16_count.txt", header = TRUE, row.names = 1, sep = "\t")
-# header = TRUE indicates that the first line of the TXT file contains the column names.
-# row.names = 1 tells R to use the first column of the data as row names
-
 #### Creating colData
 colData <- data.frame(
   Samples = c("CWT_NN_1.bam", "CWT_NN_2.bam", "CWT_NN_3.bam", "CKO_NN_1.bam", "CKO_NN_2.bam", "CKO_NN_3.bam",
@@ -21,13 +18,7 @@ print(colData)
 
 ## Make sure that rownames and colnames match
 all(colnames(countData) %in% rownames(colData))
-## TRUE
-# Find which column names in countData are not in the row names of colData
-########################  missing_names <- setdiff(colnames(countData), rownames(colData))
-# Print out the missing names
-# print(missing_names)
 all(colnames(countData) == rownames(colData))
-## TRUE
 
 # Only analyzing canonical data
 canonical_subset <- colData$Condition == "canonical"
@@ -96,11 +87,6 @@ if (!("msigdbr" %in% installed.packages())) {
 }
 library(msigdbr)
 
-#ids = list of IDS
-#fromKey = key type; toKey = key type we want to convert to
-#db = the AnnotationDb object to use.
-#ifMultiple = the argument specifies what to do if one source ID maps to several target IDs:
-#should the function return an NA or simply the first of the multiple IDs?
 convertIDs <- function( ids, fromKey, toKey, db, ifMultiple=c( "putNA", "useFirst" ) ) {
   stopifnot( inherits( db, "AnnotationDb" ) )
   ifMultiple <- match.arg( ifMultiple )
@@ -114,23 +100,13 @@ convertIDs <- function( ids, fromKey, toKey, db, ifMultiple=c( "putNA", "useFirs
 
 resLFC$hgnc_symbol <- convertIDs( row.names(resLFC), "ENSEMBL", "SYMBOL", org.Mm.eg.db )
 resLFC$entrezid <- convertIDs( row.names(resLFC), "ENSEMBL", "ENTREZID", org.Mm.eg.db )
-head(resLFC, 4)
-# Save to CSV without full path (if working directory is set)
-write.csv(resLFC, file = "2024-06-13_deseq2.csv", row.names = FALSE)
 
 # #### To make the MA plot
 library("ggplot2")
-remove.packages("ggrepel")
 install.packages("ggrepel")
 library(ggrepel)
 library("dplyr")
 library(ggpubr)
-
-# We need to reorder the factor so that "No DEG" is plotted first (at the back).
-resLFC$diffexpressed <- factor(resLFC$diffexpressed, levels = c("NO", "UP", "DOWN"))
-
-# Define colors for different groups of genes
-cols <- c("NO" = "light grey", "UP" = "orange", "DOWN" = "blue")
 
 # Calculate log2 of baseMean if not already done
 resLFC <- resLFC %>%
@@ -161,13 +137,6 @@ label_data <- resLFC %>%
 
 # Use the modified data to plot the MA plot
 resLFC$diffexpressed <- factor(resLFC$diffexpressed, levels = c("NO", "DOWN", "UP"))
-
-# Assuming `cols` contains the color definitions for each `diffexpressed` status
-cols <- c("NO" = "lightgrey", "DOWN" = "blue", "UP" = "dark orange")
-
-# Use the modified data to plot the MA plot
-# Sort the data by `diffexpressed` column
-resLFC <- resLFC[order(resLFC$diffexpressed), ]
 
 # Create the MA plot using the diffexpressed column for colors
 ma_plot <- ggplot() +
