@@ -1,4 +1,24 @@
 ### Using the files generated in myt1l_vs_phf21a_VennDiagram.R
+# Read the Excel sheet into a data frame
+weigel_2023 <- read.table(file = "Myt1l_mouse_bulk_deseq2.txt",sep="\t", header=TRUE)
+colnames(weigel_2023)
+
+## Generate files
+# E18.5 Myt1l -/- data
+hom_E18 <- weigel_2023[,c(1,2,7:10)]
+# P0 Myt1l -/- data
+hom_P0 <- weigel_2023[,c(1,2,15:18)]
+# AdMyt1l +/- data
+ad_het <- weigel_2023[,c(1,2,23:26)]
+
+####### Continuing analysis from here.....
+new_names <- c("gene_name","ENSEMBL", "baseMean","log2fc_shrunk","pvalue","p_adj")
+colnames(hom_E18) <- new_names
+
+Phf21a_E16 <- read.csv(file = "2024-03-13-deseq_CE16_CKO_WT.csv")
+new_names <- c("X.1","baseMean","log2fc_shrunk","lfcSE","pvalue","p_adj","diffexpressed", "delabel", "X", 
+            "gene_name", "entrezid")
+colnames(Phf21a_E16) <- new_names
 
 ######### Scatterplot - transcriptomic correlation
 
