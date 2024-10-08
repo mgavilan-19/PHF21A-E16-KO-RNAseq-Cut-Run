@@ -1,0 +1,51 @@
+# define sample name 
+
+samples: #change according to your samples
+    IgWT1:
+        fq1: "9932-BZ-1_S21_R1_001.fastq.gz"
+        fq2: "9932-BZ-1_S21_R2_001.fastq.gz"
+    IgWT2:
+        fq1: "9932-BZ-2_S22_R1_001.fastq.gz"
+        fq2: "9932-BZ-2_S22_R2_001.fastq.gz"
+    IgKO1:
+        fq1: "9932-BZ-3_S23_R1_001.fastq.gz"
+        fq2: "9932-BZ-3_S23_R2_001.fastq.gz"
+    IgKO2:
+        fq1: "9932-BZ-4_S3_R1_001_t_30.fastq"
+        fq2: "9932-BZ-4_S3_R2_001_t_30.fastq"
+    h3k4me2_wt1:
+        fq1: "9932-BZ-5_S25_R1_001.fastq.gz"
+        fq2: "9932-BZ-5_S25_R2_001.fastq.gz" 
+    h3k4me2_wt2:
+        fq1: "9932-BZ-6_S26_R1_001.fastq.gz"
+        fq2: "9932-BZ-6_S26_R2_001.fastq.gz"
+    h3k4me2_ko1:
+        fq1: "9932-BZ-7_S27_R1_001.fastq.gz"
+        fq2: "9932-BZ-7_S27_R2_001.fastq.gz"
+    h3k4me2_ko2:
+        fq1: "9932-BZ-8_S28_R1_001.fastq.gz"
+        fq2: "9932-BZ-8_S28_R2_001.fastq.gz"
+    h3k9me2_wt1:
+        fq1: "9932-BZ-9_S4_R1_001_t_30.fastq"
+        fq2: "9932-BZ-9_S4_R2_001_t_30.fastq"
+    h3k9me2_wt2:
+        fq1: "9932-BZ-10_S30_R1_001.fastq.gz"
+        fq2: "9932-BZ-10_S30_R2_001.fastq.gz"
+    h3k9me2_ko1:
+        fq1: "9932-BZ-11_S31_R1_001.fastq.gz"
+        fq2: "9932-BZ-11_S31_R2_001.fastq.gz"
+    h3k9me2_ko2:
+        fq1: "9932-BZ-12_S32_R1_001.fastq.gz"
+        fq2: "9932-BZ-12_S32_R2_001.fastq.gz"
+    h4k20me2_wt1:
+        fq1: "9932-BZ-13_S33_R1_001.fastq.gz"
+        fq2: "9932-BZ-13_S33_R2_001.fastq.gz"
+    h4k20me2_wt2:
+        fq1: "9932-BZ-14_S34_R1_001.fastq.gz"
+        fq2: "9932-BZ-14_S34_R2_001.fastq.gz"
+    h4k20me2_ko1:
+        fq1: "9932-BZ-15_S5_R1_001_t_30.fastq"
+        fq2: "9932-BZ-15_S5_R2_001_t_30.fastq"
+    h4k20me2_ko2:
+        fq1: "9932-BZ-16_S36_R1_001.fastq.gz"
+        fq2: "9932-BZ-16_S36_R2_001.fastq.gz"
