@@ -80,10 +80,14 @@ print(genes_per_cluster)
 #1     2     3     4 
 #9257 11457  5072  9226  
 
-average_per_cluster <- tapply(clean_df$log2_RPKM_CWT_NN_1, cluster_assignments, mean)
-print(average_per_cluster)
-#1         2         3         4 
-#9.001674  6.041491 -1.441360  2.616268    
+
+for (cluster in names(average_per_cluster)) {
+  cat("Cluster", cluster, ": ", average_per_cluster[[cluster]], " ± ", sd_per_cluster[[cluster]], "\n")
+}
+#Cluster 1 :  9.001674  ±  1.29724 
+#Cluster 2 :  6.041491  ±  0.9158448 
+#Cluster 3 :  -1.44136  ±  1.546656 
+#Cluster 4 :  2.616268  ±  1.06956 
 
 ###### make a data frame for each cluster
 df_1 <- subset(clean_merged_data , cluster == '1')
