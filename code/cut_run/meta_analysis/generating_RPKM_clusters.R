@@ -89,6 +89,17 @@ for (cluster in names(average_per_cluster)) {
 #Cluster 3 :  -1.44136  ±  1.546656 
 #Cluster 4 :  2.616268  ±  1.06956 
 
+range_per_cluster <- tapply(clean_df$log2_RPKM_CWT_NN_1, cluster_assignments, range)
+print(range_per_cluster)
+#$`1`
+# 7.521857 22.230690
+#`2`
+# 4.32916 7.52115
+#`3`
+# -7.3923732  0.5864059
+#`4`
+# 0.5885738 4.3286400
+
 ###### make a data frame for each cluster
 df_1 <- subset(clean_merged_data , cluster == '1')
 df_2 <- subset(clean_merged_data , cluster == '2')
