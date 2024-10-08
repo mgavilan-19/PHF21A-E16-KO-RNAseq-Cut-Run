@@ -49,14 +49,14 @@ ma_plot <- ggplot() +
   geom_point(data = subset(resLFC, diffexpressed == "UP"),
              aes(x = log2(baseMean), y = log2FoldChange, color = diffexpressed), alpha = 3) +
   # Add gene labels with ggrepel
-  geom_text_repel(data = label_data, aes(x = log2_baseMean, y = log2FoldChange, label = hgnc_symbol),
+   geom_text_repel(data = label_data, aes(x = log2_baseMean, y = log2FoldChange, 
+                  label = paste0("italic('", hgnc_symbol, "')")), # Italicize gene labels
                   size = 4, color = "black", 
                   arrow = arrow(length = unit(0.01, "npc")),
                   point.padding = 0.5, segment.color = "black",
-                  force = 2.0, max.overlaps = Inf) + 
+                  force = 2.0, max.overlaps = Inf, parse = TRUE) + # Enable parsing for expressions
   xlim(0, max(log2(resLFC$baseMean)) + 1) +
   ylim(-2, 2) +
-  
   # Add scale_color_manual to handle colors for the legend
   scale_color_manual(values = c("UP" = "dark orange", "DOWN" = "blue", "NO" = "light grey"),
                      labels = c("UP" = "Up-Regulated", "DOWN" = "Down-Regulated", "NO" = "Not Differentially Expressed"),
