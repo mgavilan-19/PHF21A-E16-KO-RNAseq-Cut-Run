@@ -1,6 +1,7 @@
 # PHF21A-E16-KO-RNAseq-Cut-Run
 
-*Abstract:* 
+**Abstract:**
+
 How cell-type-specific chromatin landscapes emerge and progress during metazoan
 ontogenesis remains an important question. Transcription factors are expressed in a cell
 type-specific manner and recruit chromatin-regulatory machinery to specific genomic loci.
